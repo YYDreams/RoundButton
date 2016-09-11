@@ -45,7 +45,11 @@
     
 //   外圆
     UIButton *buttonCenter = [UIButton buttonWithType:UIButtonTypeCustom];
-[self createbtn:buttonCenter frame:CGRectMake(width/2-80/2,width/2-80, 80, 80) title:@"个人秀" image:@"earth.png" tag:100 target:self action:@selector(buttonClick:)];
+    buttonCenter.backgroundColor = [UIColor greenColor];
+    
+[self createbtn:buttonCenter frame:CGRectMake(width/2-80/2,width/2-80, 80, 80) title:@"个人秀" image:nil tag:100 target:self action:@selector(buttonClick:)];
+    buttonCenter.layer.cornerRadius = 40;
+    buttonCenter.layer.masksToBounds = YES;
     self.buttonCenter = buttonCenter.center;
     NSArray *arrayData = @[@"年轻",@"90后",@"活泼",@"文艺小青年",@"乐观",@"幽默",@"美食"];
     for (int i  = 0; i<otherbuttoncount; i++) {//   里圆
@@ -120,7 +124,7 @@
     NSLog(@"%zd",index);
 }
 #pragma mark - Encapsulation Method
--(UIButton *)createbtn:(UIButton *)btn frame:(CGRect)frame title:(NSString *)title image:(NSString*)image tag:(NSInteger)tag target:(id)target action:(SEL)action{
+-(UIButton *)createbtn:(UIButton *)btn frame:(CGRect)frame title:(NSString *)title image:(nullable NSString*)image tag:(NSInteger)tag target:(id)target action:(SEL)action{
     btn.frame = frame;
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [btn setTitle:title forState:UIControlStateNormal];
